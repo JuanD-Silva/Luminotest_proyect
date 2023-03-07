@@ -1,1 +1,10 @@
-<h1>HOME</h1>
+<h1 class="text-center my-24 text-3x1">Welcome Back</h1>
+<button onclick="generatePDF()">Generate PDF</button>
+
+<script>
+function generatePDF() {
+  // Hace una petición a la ruta de express que genera el PDF
+  window.location.href = '/generate-pdf';
+}
+</script>
+

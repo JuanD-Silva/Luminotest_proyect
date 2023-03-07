@@ -6,6 +6,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 
 const loginRoutes = require('./routes/login')
+const routerPdf = require('./routes/pdfs');
 
 const app = express();
 
@@ -46,5 +47,13 @@ app.listen(app.get('port'), () => {
 app.use('/', loginRoutes);
 
 app.get('/',(req, res) => {
-    res.render('home')
+    if(req.session.loggedin == true){
+
+        res.render('home',{ name: req.session.name});
+
+    } else {
+        res.redirect('/login')
+    }
 })
+
+app.use('/', routerPdf);
