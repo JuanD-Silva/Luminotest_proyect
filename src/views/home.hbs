@@ -1,9 +1,47 @@
-<h1 class="text-center my-24 text-3x1">Welcome Back</h1>
-<button onclick="generatePDF()">Generate PDF</button>
+<div class="flex flex-col items-center justify-center my-24">
+  <h1 class="text-center text-3xl font-bold mb-8">Formulario Profesional</h1>
+  <form class="w-full max-w-lg" action="/insert-data" method="POST">
+    <div class="flex flex-wrap mb-6">
+      <label for="campo-texto" class="block text-gray-700 font-bold mb-2">
+        Campo de texto:
+      </label>
+      <input id="campo-texto" type="text" name="campo-texto" placeholder="Ingrese su texto" class="border rounded-md py-2 px-3 w-full">
+    </div>
+    <div class="flex flex-wrap mb-6">
+      <label for="campo_imagen" class="block text-gray-700 font-bold mb-2">
+        Adjuntar imagen:
+      </label>
+      <input id="campo-imagen" type="file" name="campo-imagen" class="border rounded-md py-2 px-3 w-full">
+    </div>
+    <div class="flex flex-wrap mb-6">
+      <label for="campo-seleccion" class="block text-gray-700 font-bold mb-2">
+        Selección:
+      </label>
+      <div class="relative w-full">
+        <select id="campo-seleccion" name="campo-seleccion" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value="finalizado">Finalizado</option>
+          <option value="en-proceso">En proceso</option>
+          <option value="no-empezado">No empezado</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.292 12.707l3-3a1 1 0 0 0-1.414-1.414L10 10.586V3a1 1 0 0 0-2 0v7.586l-1.292-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button  onclick="generatePDF()"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+
+<div style="text-align: center;">
+  <button onclick="generatePDF()" type="submit" class="pdf-btn-center bg-blue-500 text-white hover:bg-blue-600 border-2 border-blue-500 rounded-lg p-2 my-2">Generate PDF</button>
+</div>
 
 <script>
 function generatePDF() {
-  // Hace una petición a la ruta de express que genera el PDF
   window.location.href = '/generate-pdf';
 }
 </script>
