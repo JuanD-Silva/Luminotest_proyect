@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use(myconnection(mysql, {
-    host: 'localhost',
+    host: '108.62.106.26',
     user: 'root',
     password: '',
     port: 3306,
